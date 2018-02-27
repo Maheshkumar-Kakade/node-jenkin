@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 sh 'npm prune --production'
-                sh './deploy.sh'
+                sh './deploy.sh $DEPLOY_KEY_PATH $DEPLOY_USER $DEPLOY_HOST'
                 echo 'deployed on development'
             }
         }

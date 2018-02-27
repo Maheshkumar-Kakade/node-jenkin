@@ -1,3 +1,3 @@
-
-rsync -a --delete --exclude-from .rsyncignore -e "ssh -i $DEPLOY_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "./" ${DEPLOY_USER}@${DEPLOY_HOST}:/opt/test
-ssh ${DEPLOY_USER}@${DEPLOY_HOST} pm2 reload all
+# echo "KEY PATH $0 $1 $2"
+rsync -a --delete --exclude-from .rsyncignore -e "ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "./" $2@$3:/opt/test
+ssh -i $1 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $2@$3 pm2 reload all
