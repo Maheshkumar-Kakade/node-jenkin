@@ -18,7 +18,7 @@ pipeline {
             environment { 
                 DEPLOY_USER = 'root'
                 DEPLOY_HOST =  '192.168.0.25'//credentials('DEV_MACHINE')
-                DEPLOY_KEY_PATH = '/root/ssh-keys/ssh_priv_key'//credentials('SSH_KEY_LOCATION')
+                DEPLOY_KEY_PATH = '/ssh-keys/ssh_priv_key'//credentials('SSH_KEY_LOCATION')
             }
             steps {
                 sh 'npm prune --production'
