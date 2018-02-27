@@ -15,7 +15,15 @@ pipeline {
             when {
                 branch 'development'
             }
+            environment { 
+                DEPLOY_USER = 'root'
+                DEPLOY_HOST = credentials('DEV_MACHINE')
+                DEPLOY_KEY_PATH = credentials('SSH_KEY_LOCATION')
+            }
             steps {
+                sh 'npm prune --production'
+                sh 'rsync -a --delete --exclude-from .rsyncignore -e "ssh -i $DEPLOY_KEY_PATH -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" "./" ${DEPLOY_USER}@${DEPLOY_HOST}:/opt/test'
+                ssh '${DEPLOY_USER}@${DEPLOY_HOST} pm2 reload all'
                 echo 'deployed on development'
             }
         }

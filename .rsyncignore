@@ -1,0 +1,14 @@
+/.rsyncignore
+/.git
+/.jshintrc
+/.vscode
+/.settings
+/.tern-project
+/Jenkinsfile
+/.gitignore
+/.project
+/tsd.json
+/README.md
+/test
+/.tmp
+/logs
