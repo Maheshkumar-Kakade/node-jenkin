@@ -29,7 +29,13 @@ pipeline {
             when {
                 branch 'staging'
             }
+            environment { 
+                DEPLOY_USER = 'root'
+                DEPLOY_HOST =  credentials('STAGING_MACHINE')
+                DEPLOY_KEY_PATH = credentials('SSH_KEY_LOCATION')
+            }
             steps {
+                sh './deploy.sh $DEPLOY_KEY_PATH $DEPLOY_USER $DEPLOY_HOST'
                 echo 'deployed on staging'
             }
         }
