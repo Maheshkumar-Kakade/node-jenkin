@@ -21,7 +21,6 @@ pipeline {
                 DEPLOY_KEY_PATH = '/ssh-keys/ssh_priv_key'//credentials('SSH_KEY_LOCATION')
             }
             steps {
-                sh 'npm prune --production'
                 sh './deploy.sh $DEPLOY_KEY_PATH $DEPLOY_USER $DEPLOY_HOST'
                 echo 'deployed on development'
             }

@@ -12,3 +12,4 @@
 /test
 /.tmp
 /logs
+/deploy.sh
